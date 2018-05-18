@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: das-common-monitor #监控中心项目名称
+server:
+  port: 9005 #监控中心项目端口号
+turbine:
+  appConfig: das-system-web #受监控的服务名称（多个用‘，’分割）
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  instanceUrlSuffix: /hystrix.stream #熔断服务路径，监控中心会请求制定服务的熔断器访问路径

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kentrasoft.dao.MenuMapper" >
+    <resultMap id="BaseResultMap" type="com.kentrasoft.entity.Menu" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="menu_code" property="menuCode" jdbcType="VARCHAR" />
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+        <result column="menu_url" property="menuUrl" jdbcType="VARCHAR" />
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+        <result column="menu_type" property="menuType" jdbcType="CHAR" />
+        <result column="status" property="status" jdbcType="CHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, menu_code, menu_name, menu_url,parent_id,menu_type,status
+    </sql>
+
+    <select id="getListPage" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM MENU
+    </select>
+
+    <select id="getOne" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM MENU
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.kentrasoft.entity.Menu" >
+
+    </insert>
+
+    <update id="update" parameterType="com.kentrasoft.entity.Menu" >
+
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String" >
+        DELETE FROM MENU WHERE id =#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,18 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka/
+spring:
+  cloud:
+    config:
+      name: neo-config
+      profile: gateway,rabbit
+      label: master
+      fail-fast: true
+      discovery:
+        enabled: true
+        serviceId: das-common-config
+      retry:
+        max-attempts: 6
+        initial-interval: 1000
+        max-interval: 2000

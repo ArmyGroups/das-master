@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kentrasoft.dao.RoleMapper" >
+    <resultMap id="BaseResultMap" type="com.kentrasoft.entity.Role" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
+        <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+        <result column="role_rights" property="roleRights" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="CHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, role_code, role_name, role_rights,status
+    </sql>
+
+    <select id="getListPage" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ROLE
+    </select>
+
+    <select id="getOne" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        SELECT <include refid="Base_Column_List" /> FROM ROLE WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.kentrasoft.entity.Role" >
+
+    </insert>
+
+    <update id="update" parameterType="com.kentrasoft.entity.Role" >
+
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String" >
+        DELETE FROM ROLE WHERE id =#{id}
+    </delete>
+
+</mapper>
